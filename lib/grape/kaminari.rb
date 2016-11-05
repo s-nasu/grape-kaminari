@@ -29,13 +29,13 @@ module Grape
           )
           params do
             optional :page,     type: Integer, default: 1,
-                                desc: 'Page offset to fetch.'
+                                desc: 'ページ番号。指定しない場合は １ページ。'
             optional :per_page, type: Integer, default: options[:per_page],
-                                desc: 'Number of results to return per page.',
+                                desc: "ページ当たりの表示件数。 最大件数は #{options[:max_per_page]}",
                                 max_value: options[:max_per_page]
             if  options[:offset].is_a? Numeric
               optional :offset, type: Integer, default: options[:offset],
-                                desc: 'Pad a number of results.'
+                                desc: 'データの表示開始位置。指定しない場合は0'
             end
           end
         end
